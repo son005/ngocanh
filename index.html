@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chúc Mừng Sinh Nhật Ngọc Anh!</title>
+    <link rel="icon" href="ngocanh4.jpg" type="image/jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Lobster&family=Pacifico&display=swap" rel="stylesheet"> <!-- Thêm Google Fonts -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('back.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            text-align: center;
+            padding: 50px;
+        }
+        .hidden {
+            display: none;
+        }
+        .gift-box {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            animation: pop 0.5s ease-out;
+        }
+        @keyframes pop {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        @keyframes open {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        h1 {
+            font-size: 70px;
+            margin-bottom: 10px;
+            font-family: 'Lobster', cursive;
+            color: #ffeb3b;
+        }
+        h2 {
+            font-size: 50px;
+            margin-bottom: 20px;
+            color: #ffeb3b;
+        }
+        p {
+            font-size: 32px; /* Tăng kích thước lên 2 cỡ */
+            margin-bottom: 30px;
+            color: #ffffff;
+            background-color: rgba(0, 0, 0, 0.5); /* Nền chữ */
+            padding: 15px; /* Khoảng cách giữa chữ và nền */
+            border-radius: 10px; /* Bo góc cho nền chữ */
+        }
+        .birthday-cake {
+            width: 200px;
+            margin: 20px auto;
+        }
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        .gallery img {
+            width: 150px;
+            border-radius: 10px;
+        }
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 50px;
+            animation: rise 5s forwards;
+            opacity: 0.7;
+        }
+        @keyframes rise {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="background-music" src="your-music-file.mp3" loop autoplay></audio>
+    
+    <div class="gift-box" id="gift-box">
+        <img src="hopqua.jpg" alt="Hộp quà">
+    </div>
+
+    <div id="content" class="hidden">
+        <h1>Chúc Mừng Sinh Nhật Ngọc Anh!</h1>
+        <h2>19 Tuổi </h2>
+        <img src="banh.jpg" alt="Bánh sinh nhật" class="birthday-cake">
+        <p>Chúc Ngọc Anh một ngày sinh nhật tràn ngập niềm vui, hạnh phúc và những điều tuyệt vời nhất!</p>
+        <p>Tuổi mới xinh đẹp hơn và ít tệ lại:))!</p>
+        <p>Happy Birthday!</p>
+
+        <div class="gallery">
+            <img src="ngocanh1.jpg" alt="Ngọc Anh 1">
+            <img src="ngocanh2.jpg" alt="Ngọc Anh 2">
+            <img src="ngocanh3.jpg" alt="Ngọc Anh 3">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('gift-box').onclick = function() {
+            this.style.animation = 'open 0.5s forwards';
+            setTimeout(() => {
+                document.getElementById('content').classList.remove('hidden');
+                this.style.display = 'none';
+                startBalloonEffect();
+            }, 500);
+        };
+
+        function startBalloonEffect() {
+            setInterval(createBalloon, 500);
+        }
+
+        function createBalloon() {
+            const balloon = document.createElement('img');
+            balloon.src = 'bong.jpg'; // Thay đường dẫn đến hình ảnh bóng bay
+            balloon.classList.add('balloon');
+            balloon.style.left = Math.random() * 100 + 'vw';
+            document.body.appendChild(balloon);
+            setTimeout(() => {
+                balloon.remove();
+            }, 3000);
+        }
+    </script>
+
+</body>
+</html>
